@@ -6,9 +6,9 @@ class HelpdeskTicket(models.Model):
     _name = "helpdesk.ticket"
     _description = "Helpdesk Ticket"
     _rec_name = "number"
-    _order = "number desc"
+    _order = "priority desc, number desc, id desc"
     _mail_post_access = "read"
-    _inherit = ["mail.thread.cc", "mail.activity.mixin"]
+    _inherit = ["mail.thread.cc", "mail.activity.mixin", "portal.mixin"]
 
     def _get_default_stage_id(self):
         return self.env["helpdesk.ticket.stage"].search([], limit=1).id
@@ -21,7 +21,9 @@ class HelpdeskTicket(models.Model):
     number = fields.Char(string="Ticket number", default="/", readonly=True)
     name = fields.Char(string="Title", required=True)
     description = fields.Html(required=True, sanitize_style=True)
-    user_id = fields.Many2one(comodel_name="res.users", string="Assigned user")
+    user_id = fields.Many2one(
+        comodel_name="res.users", string="Assigned user", tracking=True, index=True
+    )
     user_ids = fields.Many2many(
         comodel_name="res.users", related="team_id.user_ids", string="Users"
     )
@@ -45,7 +47,7 @@ class HelpdeskTicket(models.Model):
     assigned_date = fields.Datetime(string="Assigned Date")
     closed_date = fields.Datetime(string="Closed Date")
     closed = fields.Boolean(related="stage_id.closed")
-    unattended = fields.Boolean(related="stage_id.unattended")
+    unattended = fields.Boolean(related="stage_id.unattended", store=True)
     tag_ids = fields.Many2many(comodel_name="helpdesk.ticket.tag", string="Tags")
     company_id = fields.Many2one(
         comodel_name="res.company",
@@ -90,8 +92,11 @@ class HelpdeskTicket(models.Model):
     )
     active = fields.Boolean(default=True)
 
-    def send_user_mail(self):
-        self.env.ref("helpdesk_mgmt.assignment_email_template").send_mail(self.id)
+    def name_get(self):
+        res = []
+        for rec in self:
+            res.append((rec.id, rec.number + " - " + rec.name))
+        return res
 
     def assign_to_me(self):
         self.write({"user_id": self.env.user.id})
@@ -120,12 +125,7 @@ class HelpdeskTicket(models.Model):
     def create(self, vals):
         if vals.get("number", "/") == "/":
             vals["number"] = self._prepare_ticket_number(vals)
-        res = super().create(vals)
-
-        # Check if mail to the user has to be sent
-        if vals.get("user_id") and res:
-            res.send_user_mail()
-        return res
+        return super().create(vals)
 
     def copy(self, default=None):
         self.ensure_one()
@@ -146,14 +146,7 @@ class HelpdeskTicket(models.Model):
                     vals["closed_date"] = now
             if vals.get("user_id"):
                 vals["assigned_date"] = now
-
-        res = super().write(vals)
-
-        # Check if mail to the user has to be sent
-        for ticket in self:
-            if vals.get("user_id"):
-                ticket.send_user_mail()
-        return res
+        return super().write(vals)
 
     def action_duplicate_tickets(self):
         for ticket in self.browse(self.env.context["active_ids"]):
@@ -164,6 +157,11 @@ class HelpdeskTicket(models.Model):
         if "company_id" in values:
             seq = seq.with_context(force_company=values["company_id"])
         return seq.next_by_code("helpdesk.ticket.sequence") or "/"
+
+    def _compute_access_url(self):
+        super()._compute_access_url()
+        for item in self:
+            item.access_url = "/my/ticket/%s" % (item.id)
 
     # ---------------------------------------------------
     # Mail gateway
