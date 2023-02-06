@@ -553,6 +553,7 @@ msgstr "Descrição"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company__display_name
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_partner__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__display_name
 msgid "Display Name"
 msgstr "Nome a Exibir"
 
@@ -663,6 +664,7 @@ msgid "Helpdesk Manager"
 msgstr "Gestor de Helpdesk"
 
 #. module: helpdesk_mgmt
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__helpdesk_team_ids
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.view_helpdesk_team_form
 msgid "Helpdesk Team"
 msgstr "Equipa de Helpdesk"
@@ -693,6 +695,11 @@ msgstr "Categoria do Ticket de Helpdesk"
 #: model:ir.model,name:helpdesk_mgmt.model_helpdesk_ticket_channel
 msgid "Helpdesk Ticket Channel"
 msgstr "Canal do Ticket de Helpdesk"
+
+#. module: helpdesk_mgmt
+#: model:mail.message.subtype,name:helpdesk_mgmt.hlp_tck_team_created
+msgid "Helpdesk Ticket Created"
+msgstr ""
 
 #. module: helpdesk_mgmt
 #: model:ir.model,name:helpdesk_mgmt.model_helpdesk_ticket_stage
@@ -740,6 +747,7 @@ msgstr "Histórico"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company__id
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings__id
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_partner__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__id
 msgid "ID"
 msgstr "ID"
 
@@ -822,6 +830,7 @@ msgstr "Estado de Kanban"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company____last_update
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_partner____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users____last_update
 msgid "Last Modified on"
 msgstr "Última Modificação em"
 
@@ -1184,7 +1193,10 @@ msgid "Send a new ticket"
 msgstr "Enviar um novo ticket"
 
 #. module: helpdesk_mgmt
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_category__sequence
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_channel__sequence
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_stage__sequence
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_team__sequence
 msgid "Sequence"
 msgstr "Sequência"
 
@@ -1372,6 +1384,11 @@ msgid "Ticket"
 msgstr ""
 
 #. module: helpdesk_mgmt
+#: model:mail.message.subtype,name:helpdesk_mgmt.hlp_tck_created
+msgid "Ticket Created"
+msgstr ""
+
+#. module: helpdesk_mgmt
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.view_helpdesk_ticket_stage_search
 msgid "Ticket Stage Search"
 msgstr "Pesquisar Etapa do Ticket"
@@ -1408,6 +1425,11 @@ msgstr "Contagem de tickets ativos"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__helpdesk_ticket_count
 msgid "Ticket count"
 msgstr "Contagem de tickets"
+
+#. module: helpdesk_mgmt
+#: model:mail.message.subtype,description:helpdesk_mgmt.hlp_tck_created
+msgid "Ticket created"
+msgstr ""
 
 #. module: helpdesk_mgmt
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket__number
@@ -1502,6 +1524,12 @@ msgid "User: Personal tickets"
 msgstr "Utilizador: Tickets do Próprio"
 
 #. module: helpdesk_mgmt
+#: model:res.groups,name:helpdesk_mgmt.group_helpdesk_user_team
+msgid "User: Team tickets"
+msgstr ""
+
+#. module: helpdesk_mgmt
+#: model:ir.model,name:helpdesk_mgmt.model_res_users
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket__user_ids
 msgid "Users"
 msgstr "Utilizadores"

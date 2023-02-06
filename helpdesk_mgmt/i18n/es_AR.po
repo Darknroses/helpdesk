@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-11-30 02:46+0000\n"
+"PO-Revision-Date: 2023-01-16 03:18+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es_AR\n"
@@ -443,6 +443,7 @@ msgstr "Todos los Tickets"
 #: model:ir.model.fields,help:helpdesk_mgmt.field_helpdesk_ticket_team__show_in_portal
 msgid "Allow to select this team when creating a new ticket in the portal."
 msgstr ""
+"Permitir seleccionar este equipo al crear un nuevo ticket en el portal."
 
 #. module: helpdesk_mgmt
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.ticket_view_form
@@ -565,7 +566,7 @@ msgstr "Índice de Color"
 #. module: helpdesk_mgmt
 #: model:ir.model,name:helpdesk_mgmt.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Compañías"
 
 #. module: helpdesk_mgmt
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket__company_id
@@ -580,7 +581,7 @@ msgstr "Compañía"
 #. module: helpdesk_mgmt
 #: model:ir.model,name:helpdesk_mgmt.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Configurar Ajustes"
 
 #. module: helpdesk_mgmt
 #: model:ir.ui.menu,name:helpdesk_mgmt.helpdesk_ticket_config_main_menu
@@ -690,6 +691,7 @@ msgstr "Descripción"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company__display_name
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_partner__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
 
@@ -800,6 +802,7 @@ msgid "Helpdesk Manager"
 msgstr "Gerente de la Mesa de Ayuda"
 
 #. module: helpdesk_mgmt
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__helpdesk_team_ids
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.view_helpdesk_team_form
 msgid "Helpdesk Team"
 msgstr "Equipo de la Mesa de Ayuda"
@@ -830,6 +833,11 @@ msgstr "Categoría del Ticket de la Mesa de Ayuda"
 #: model:ir.model,name:helpdesk_mgmt.model_helpdesk_ticket_channel
 msgid "Helpdesk Ticket Channel"
 msgstr "Canal del Ticket de la Mesa de Ayuda"
+
+#. module: helpdesk_mgmt
+#: model:mail.message.subtype,name:helpdesk_mgmt.hlp_tck_team_created
+msgid "Helpdesk Ticket Created"
+msgstr "Ticket de Mesa de Ayuda Creado"
 
 #. module: helpdesk_mgmt
 #: model:ir.model,name:helpdesk_mgmt.model_helpdesk_ticket_stage
@@ -877,6 +885,7 @@ msgstr "Historial"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company__id
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings__id
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_partner__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__id
 msgid "ID"
 msgstr "ID"
 
@@ -959,6 +968,7 @@ msgstr "Estado Kanban"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company____last_update
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_partner____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users____last_update
 msgid "Last Modified on"
 msgstr "Última Modificación el"
 
@@ -1088,7 +1098,7 @@ msgstr "Nuevo Ticket"
 #. module: helpdesk_mgmt
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.res_config_settings_view_form
 msgid "New ticket form (portal)"
-msgstr ""
+msgstr "Nuevo formulario de ticket (portal)"
 
 #. module: helpdesk_mgmt
 #: code:addons/helpdesk_mgmt/controllers/myaccount.py:0
@@ -1313,7 +1323,7 @@ msgstr "Token de Seguridad"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_company__helpdesk_mgmt_portal_select_team
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_config_settings__helpdesk_mgmt_portal_select_team
 msgid "Select team in Helpdesk portal"
-msgstr ""
+msgstr "Seleccione al equipo en el portal de Mesa de Ayuda"
 
 #. module: helpdesk_mgmt
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.portal_create_ticket
@@ -1321,7 +1331,10 @@ msgid "Send a new ticket"
 msgstr "Enviar un nuevo ticket"
 
 #. module: helpdesk_mgmt
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_category__sequence
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_channel__sequence
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_stage__sequence
+#: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_team__sequence
 msgid "Sequence"
 msgstr "Secuencia"
 
@@ -1329,7 +1342,7 @@ msgstr "Secuencia"
 #: model:ir.actions.act_window,name:helpdesk_mgmt.action_helpdesk_mgmt_config_settings
 #: model:ir.ui.menu,name:helpdesk_mgmt.helpdesk_config_settings_menu
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #. module: helpdesk_mgmt
 #: model:ir.actions.server,name:helpdesk_mgmt.model_helpdesk_ticket_action_share
@@ -1346,12 +1359,12 @@ msgstr ""
 #. module: helpdesk_mgmt
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket_team__show_in_portal
 msgid "Show in portal form"
-msgstr ""
+msgstr "Mostrar en el formulario del portal"
 
 #. module: helpdesk_mgmt
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.res_config_settings_view_form
 msgid "Show teams form"
-msgstr ""
+msgstr "Mostrar formulario de equipos"
 
 #. module: helpdesk_mgmt
 #: model:helpdesk.ticket.category,name:helpdesk_mgmt.helpdesk_category_1
@@ -1514,6 +1527,11 @@ msgid "Ticket"
 msgstr "Ticket"
 
 #. module: helpdesk_mgmt
+#: model:mail.message.subtype,name:helpdesk_mgmt.hlp_tck_created
+msgid "Ticket Created"
+msgstr "Ticket Creado"
+
+#. module: helpdesk_mgmt
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt.view_helpdesk_ticket_stage_search
 msgid "Ticket Stage Search"
 msgstr "Buscar estado de ticket"
@@ -1550,6 +1568,11 @@ msgstr "Cantidad de tickets activos"
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_res_users__helpdesk_ticket_count
 msgid "Ticket count"
 msgstr "Cantidad de tickets"
+
+#. module: helpdesk_mgmt
+#: model:mail.message.subtype,description:helpdesk_mgmt.hlp_tck_created
+msgid "Ticket created"
+msgstr "Ticket creado"
 
 #. module: helpdesk_mgmt
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket__number
@@ -1644,6 +1667,12 @@ msgid "User: Personal tickets"
 msgstr "Usuario: Tickets personales"
 
 #. module: helpdesk_mgmt
+#: model:res.groups,name:helpdesk_mgmt.group_helpdesk_user_team
+msgid "User: Team tickets"
+msgstr "Usuario: Equipo de tickets"
+
+#. module: helpdesk_mgmt
+#: model:ir.model,name:helpdesk_mgmt.model_res_users
 #: model:ir.model.fields,field_description:helpdesk_mgmt.field_helpdesk_ticket__user_ids
 msgid "Users"
 msgstr "Usuarios"
