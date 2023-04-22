@@ -4,7 +4,7 @@
     "name": "Helpdesk Management",
     "summary": """
         Helpdesk""",
-    "version": "14.0.2.5.0",
+    "version": "14.0.2.6.0",
     "license": "AGPL-3",
     "category": "After-Sales",
     "author": "AdaptiveCity, "
@@ -30,6 +30,7 @@
         "views/helpdesk_ticket_tag_views.xml",
         "views/helpdesk_ticket_views.xml",
         "views/helpdesk_dashboard_views.xml",
+        "wizard/create_select_partner.xml",
     ],
     "demo": ["demo/helpdesk_demo.xml"],
     "development_status": "Beta",
